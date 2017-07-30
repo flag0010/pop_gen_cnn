@@ -1,4 +1,4 @@
-This directory contains all of the code necessary to run FILET (Finding Introgressed Loci using Extra-Trees). Briefly, this tool uses an Extra-Trees classifier (Geurts et al. 2005: http://www.montefiore.ulg.ac.be/~ernst/uploads/news/id63/extremely-randomized-trees.pdf) to classify genomic windows from a as one of three different modes of evolution based on population genomic data from a two-species sample:
+This directory contains all of the code necessary to run FILET (Finding Introgressed Loci using Extra-Trees). Briefly, this tool uses an Extra-Trees classifier (Geurts et al. 2005: http://www.montefiore.ulg.ac.be/~ernst/uploads/news/id63/extremely-randomized-trees.pdf) to classify genomic windows from a as one of three different modes of evolution based on population genomic data from a phased two-species sample:
 1) Introgression from species 1 to species 2
 2) Introgression from species 2 to species 1
 3) No introgression
@@ -17,6 +17,6 @@ This will compile the C tools included in this pipeline, and you should then be 
 - Calculate feature vectors from these training data, and combine into a matrix of labeled training examples.
 - Train the FILET classifier.
 - Calculate summary statistics from genomic windows we wish to classify.
-- Classify genomic data.
+- Classify genomic data (with known or inferred haplotypic phase).
 
 Not all of these steps are mandatory: if you have generated your own feature vectors from training data, then provided these data are in the proper format (see example in featureVectorsToClassify/) you can proceed to the training step. Similarly, if you have calculated summary statistics from genomic data, then once a classifier has been trained you can skip straight to the data classification step as well (again, provided these statistics are listed in the proper format; see example in dataToClassify/). Note that this pipeline also assumes that you have already simulated training data (with ms-style output), which can be done using msmove (https://github.com/geneva/msmove) or the simulator of your choice. The requirements for simulated data and their file names are described in the comments above Step 4 of examplePipeline.sh.

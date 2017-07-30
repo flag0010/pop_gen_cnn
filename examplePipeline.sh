@@ -72,8 +72,9 @@ python trainFiletClassifier.py trainingSets/threeClass.fvec classifier/threeClas
 # then entire site is ignored during the calculation of summary statistics.
 # Note that for the fasta-formatted input files, each sequence must be the same length (i.e. the
 # same chromosome/scaffold/region) though different files may have different numbers of sequences
-# (i.e. pop1.fa and pop2.fa may have different sample sizes, and anc.fa should have only one
-# entry). The BED format is described here: https://genome.ucsc.edu/FAQ/FAQformat.html#format1
+# (i.e. pop1.fa and pop2.fa will have one entry for each of their haploid sample sizes n1 and n2,
+# and anc.fa should have only one entry). The BED format is described here:
+# https://genome.ucsc.edu/FAQ/FAQformat.html#format1
 #
 # The normalizePgStats.py script divides all measures of variation that scale with the number of
 # sites (e.g. pi, the number of segregating sites, the number of private alleles) by the number

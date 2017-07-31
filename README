@@ -20,3 +20,5 @@ This will compile the C tools included in this pipeline, and you should then be 
 - Classify genomic data (with known or inferred haplotypic phase).
 
 Not all of these steps are mandatory: if you have generated your own feature vectors from training data, then provided these data are in the proper format (see example in featureVectorsToClassify/) you can proceed to the training step. Similarly, if you have calculated summary statistics from genomic data, then once a classifier has been trained you can skip straight to the data classification step as well (again, provided these statistics are listed in the proper format; see example in dataToClassify/). Note that this pipeline also assumes that you have already simulated training data (with ms-style output), which can be done using msmove (https://github.com/geneva/msmove) or the simulator of your choice. The requirements for simulated data and their file names are described in the comments above Step 4 of examplePipeline.sh.
+
+Note: the full results from our scan in D. simulans and D. sechellia will be added to a directory called simSechResults later today. (I.e. once my dev server comes back up...)

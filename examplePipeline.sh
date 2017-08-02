@@ -47,7 +47,8 @@ python buildThreeClassTrainingSet.py trainingSimsStats/ trainingSets/threeClass.
 
 # Step 4: Train the classifier. The first two arguments are the paths to the training data and
 # classifier pickle (see below) to be written, respectively. The remaining arguments are the names 
-# of all statistics to be included in the classifier.
+# of all statistics to be included in the classifier, or simply the word "all" (without quotes).
+# if using all features in the training data.
 #
 # Note: this step may take several hours for ~10000 training examples.
 #

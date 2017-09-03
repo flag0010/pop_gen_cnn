@@ -2,11 +2,57 @@ REIMPLEMENATION OF FILET USING DEEP NEURAL NET
 
 The original FILET approach (BELOW) used a tree based method to detect introgression.  It relied on a user specified feature vector based pop gen summary stats. The advantage of using a neural network is that the network itself extracts a feature vector during training, meaning it's not limited by the current the state of the art in pop gen summary stats.
 
+My first attempt involved using a convolutional neural network architecture.  First I encoded the training data (bi-allelic SNPs encoded as binary matrices) as a sort of binary image. An example image can be found at the link below.
 
-![My image](https://github.com/flag0010/FILET/blob/master/Figure_1.png)
+https://github.com/flag0010/FILET/blob/master/Figure_1.png
+
+There are 34 lines, 20 from pop1 and 14 from pop2. Normally SNP matrices are displayed with individuals on rows and SNPs (segregating sites) on cols, but I transposed these SNP matrices for reasons I'll explain below. 
+
+Next I had to deal with the fact that the training SNP matrices are of variable length.  In the training data supplied with FILET I found the longest had 1102 SNPs. I padded all training data to this length by adding zeros.  This is why the the bottom of the matrix image above is all black.
+
+Now I'm fiddling with network architecture.  Because the SNP matrices are transposed a 1D convolution (row-wise) will stride across a single SNP for individuals.  This allows the neural net to do something like image segmentation and discover that there are 20 indivuals from pop1 and 14 from pop2 (i.e. the netowork is not away of pop labels).  I'm still working on optimizing this striding along with pooling to 1) keep the network relatively small, yet 2) allow it to efficiently discover populations and extract meaningful features.  The output classification includes 3 possibilities.  Migration from pop1 into pop2, the reverse, and no migration.
+
+Two other observations:
+1) one can shuffle the rows (SNPs) in the SNP arrays to create new inputs using existing inputs.  This should help in training the network, much in the same way that people add perturbations to images when training image classifiers
+2) one can flip all the bits in the binary SNP matrix (e.g. for matrix m, flipped = m*-1+1). This also can be used to create new inputs, and trains the network not to focus on specific values (0 or 1), but rather on patterns and correlations between values. This seems important since assigning SNPs to bits is arbitrary.
+
+to run, first install python 2.7, with numpy, keras and theano.  Then extract the data running:
+python extract.data.set.py
+
+Then fit a simple (and non-optimal) CNN:
+python fit.theano.60.py
+
+The CNN fits for 60 epochs and has an architecture as follows:
+
+Layer (type)                 Output Shape              Param #   
+=================================================================
+conv1d_5 (Conv1D)            (None, 1101, 128)         8832      
+_________________________________________________________________
+conv1d_6 (Conv1D)            (None, 1100, 64)          16448     
+_________________________________________________________________
+max_pooling1d_4 (MaxPooling1 (None, 550, 64)           0         
+_________________________________________________________________
+conv1d_7 (Conv1D)            (None, 549, 64)           8256      
+_________________________________________________________________
+max_pooling1d_5 (MaxPooling1 (None, 274, 64)           0         
+_________________________________________________________________
+conv1d_8 (Conv1D)            (None, 273, 64)           8256      
+_________________________________________________________________
+max_pooling1d_6 (MaxPooling1 (None, 136, 64)           0         
+_________________________________________________________________
+flatten_2 (Flatten)          (None, 8704)              0         
+_________________________________________________________________
+dense_2 (Dense)              (None, 128)               1114240   
+_________________________________________________________________
+dense_3 (Dense)              (None, 3)                 387       
+=================================================================
+Total params: 1,156,419
+Trainable params: 1,156,419
+Non-trainable params: 0
+_________________________________________________________________
 
 
-
+Short runs seem to suggest a test set accuracy of classification of about 85% is possible.  Perhaps better with tuning.  The goal is to get this > 95%.
 
 
 

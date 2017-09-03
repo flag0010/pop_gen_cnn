@@ -1,3 +1,7 @@
+REIMPLEMENATION OF FILET USING DEEP NEURAL NET
+
+The original FILET approach (BELOW) used a tree based method to detect introgress that relied on a user specified feature vector based pop gen summary stats. The advantage of using a neural network is that the network itself extracts a feature vector during learning.  Meaning it's not limited by the current the state of the art in pop gen summary stats.
+
 This directory contains all of the code necessary to run FILET (Finding Introgressed Loci using Extra-Trees). Briefly, this tool uses an Extra-Trees classifier (Geurts et al. 2005: http://www.montefiore.ulg.ac.be/~ernst/uploads/news/id63/extremely-randomized-trees.pdf) to classify genomic windows from a as one of three different modes of evolution based on population genomic data from a phased two-species sample:
 1) Introgression from species 1 to species 2
 2) Introgression from species 2 to species 1

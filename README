@@ -3,7 +3,7 @@ REIMPLEMENATION OF FILET USING DEEP NEURAL NET
 The original FILET approach (BELOW) used a tree based method to detect introgression.  It relied on a user specified feature vector based pop gen summary stats. The advantage of using a neural network is that the network itself extracts a feature vector during training, meaning it's not limited by the current the state of the art in pop gen summary stats.
 
 
-![alt text](https://github.com/flag0010/FILET/blob/master/Figure_1.png)
+![My image](https://github.com/flag0010/FILET/blob/master/Figure_1.png)
 
 
 

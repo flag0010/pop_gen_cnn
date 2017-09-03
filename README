@@ -6,11 +6,13 @@ My first attempt involved using a convolutional neural network architecture.  Fi
 
 https://github.com/flag0010/FILET/blob/master/Figure_1.png
 
-There are 34 lines, 20 from pop1 and 14 from pop2. Normally SNP matrices are displayed with individuals on rows and SNPs (segregating sites) on cols, but I transposed these SNP matrices for reasons I'll explain below. 
+There are 34 lines, 20 from pop1 and 14 from pop2. Normally SNP matrices are displayed with individuals on rows and SNPs (segregating sites) on cols, but I transposed these SNP matrices for reasons I'll explain below.  Thus the image and SNP matrix are 1102x34. 
 
 Next I had to deal with the fact that the training SNP matrices are of variable length.  In the training data supplied with FILET I found the longest had 1102 SNPs. I padded all training data to this length by adding zeros.  This is why the the bottom of the matrix image above is all black.
 
-Now I'm fiddling with network architecture.  Because the SNP matrices are transposed a 1D convolution (row-wise) will stride across a single SNP for individuals.  This allows the neural net to do something like image segmentation and discover that there are 20 indivuals from pop1 and 14 from pop2 (i.e. the netowork is not away of pop labels).  I'm still working on optimizing this striding along with pooling to 1) keep the network relatively small, yet 2) allow it to efficiently discover populations and extract meaningful features.  The output classification includes 3 possibilities.  Migration from pop1 into pop2, the reverse, and no migration.
+Now I'm fiddling with network architecture.  Because the SNP matrices are transposed a 1D convolution (row-wise) will stride across a single SNP for all 34 individuals.  This allows the neural net to do something like image segmentation and discover that there are 20 indivuals from pop1 and 14 from pop2 (the network is not aware of pop labels).  I'm still working on optimizing this striding along with pooling to 1) keep the network relatively small, yet 2) allow it to efficiently discover populations and extract meaningful features.  
+
+Finally, as with the original version, the output classification includes 3 possibilities.  Migration from pop1 into pop2, the reverse, and no migration. This is accomplished in the standard way using a final softmax network layer with 3 outputs, one for each class.
 
 Two other observations:
 1) one can shuffle the rows (SNPs) in the SNP arrays to create new inputs using existing inputs.  This should help in training the network, much in the same way that people add perturbations to images when training image classifiers

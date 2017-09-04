@@ -4,7 +4,7 @@ The original FILET approach (BELOW) used a decision tree ensemble to detect intr
 
 My first attempt involved using a convolutional neural network architecture.  First I encoded the training data (bi-allelic SNPs encoded as binary matrices) as a sort of binary image. An example image can be found at the link below.
 
-![binary image](https://github.com/flag0010/FILET/blob/master/Figure_1.png)
+https://github.com/flag0010/FILET/blob/master/Figure_1.png
 
 There are 34 lines, 20 from pop1 and 14 from pop2. Normally SNP matrices are displayed with individuals on rows and SNPs (segregating sites) on cols, but I transposed these SNP matrices for reasons I'll explain below.  Thus the image and SNP matrix are 1102x34. 
 

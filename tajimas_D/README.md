@@ -9,4 +9,4 @@ then install keras and tensorflow:
 3) conda install tensorflow
 
 then run
-python make.tajD.pred.py 
+`python make.tajD.pred.py` 

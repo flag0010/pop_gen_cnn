@@ -7,7 +7,7 @@ from keras.layers import Conv1D, MaxPooling1D, AveragePooling1D
 from generic_tajD import calc_S_and_k_from_seqs, count_all, tajD
 from random import choice
 from matplotlib import pyplot as plt
-from keras_diagram import ascii
+#from keras_diagram import ascii
 from sklearn.neighbors import NearestNeighbors
 
 
@@ -59,7 +59,7 @@ model.add(Conv1D(256, kernel_size=2,
                  activation='relu',
                  input_shape=(40, 20)))
 #model.add(Dropout(0.25))#not helpful
-model.add(Conv1D(128, kernel_size=2, activation='relu'))
+model.add(Conv1D(256, kernel_size=2, activation='relu'))
 model.add(AveragePooling1D(pool_size=2))
 model.add(Dropout(0.1))
 model.add(Flatten())
@@ -68,7 +68,7 @@ model.add(Dropout(0.25))
 model.add(Dense(1, kernel_initializer='normal'))
 model.compile(loss='mean_squared_error', optimizer='adam')
 model.summary()
-print(ascii(model))
+#print(ascii(model))
 model.fit(xtrain, ytrain, batch_size=64,
           epochs=7, verbose=1,
           validation_data=(xtest, ytest))

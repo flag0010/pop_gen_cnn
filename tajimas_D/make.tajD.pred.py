@@ -86,7 +86,7 @@ v = np.random.randint(2, size=40)
 for j in range(19):
     q.append(v)
 
-q.append(v*-1+1)
+q.append(v*-2+1)
 S,k =  calc_S_and_k_from_seqs(q)
 
 q = transpose_shape(np.array([q]))

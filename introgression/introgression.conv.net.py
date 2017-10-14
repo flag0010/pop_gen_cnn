@@ -11,13 +11,13 @@ batch_size = 256
 epochs = 60
 num_classes = 3
 Using TensorFlow backend.
-In [2]:
+
 u = np.load("/dataset/big_sim.npz")
 xtrain, xtest, ytrain, ytest = [u[i] for i in ['xtrain', 'xtest', 'ytrain', 'ytest']]
 
 ytest = keras.utils.to_categorical(ytest, num_classes)
 ytrain = keras.utils.to_categorical(ytrain, num_classes)
-In [3]:
+
 model = Sequential()
 model.add(Conv1D(256, kernel_size=2,
                  activation='relu',

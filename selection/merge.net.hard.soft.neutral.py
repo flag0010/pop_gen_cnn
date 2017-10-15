@@ -51,6 +51,7 @@ b2 = Sequential()
 b2.add(Dense(64, input_shape = (5000,), activation='relu'))
 b2.add(Dropout(0.1))
 
+#merging branch 1 and 2
 model = Sequential()
 model.add(Merge([b1, b2], mode = 'concat'))
 
@@ -58,7 +59,6 @@ model.add(Dense(256, activation='relu', kernel_initializer='normal'))
 model.add(Dropout(0.25))
 
 model.add(Dense(num_classes, activation='softmax'))
-
 
 #compile and fit
 

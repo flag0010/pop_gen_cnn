@@ -6,14 +6,14 @@ from keras.models import Sequential
 from keras.layers import Dense, Dropout, Flatten, Merge
 from keras.layers import Conv1D, MaxPooling1D, AveragePooling1D
 
-batch_size, epochs, num_classes = 32*2, 20, 3
-In [3]:
+epochs, num_classes = 20, 3
+
 u = np.load('/dataset/hard.soft.neut.npz')
 xtrain, xtest, ytrain, ytest = [u[i] for i in 'xtrain xtest ytrain ytest'.split()]
-In [4]:
+
 ytest = keras.utils.to_categorical(ytest, num_classes)
 ytrain = keras.utils.to_categorical(ytrain, num_classes)
-In [6]:
+
 ksize = 2
 
 model = Sequential()

@@ -4,6 +4,7 @@ import numpy as np
 
 u = np.load('mig.runs/big_sim.npz')
 pred = model.predict(u['xtest'])
+t = u['ytest']
 
 k = []
 for idx,i in enumerate(pred):

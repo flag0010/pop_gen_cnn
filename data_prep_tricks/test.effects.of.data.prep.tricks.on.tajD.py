@@ -11,7 +11,7 @@ from matplotlib import pyplot as plt
 from sklearn.neighbors import NearestNeighbors
 from pprint import pprint
 
-nreps, nepoch = 40, 10
+nreps, nepoch = 10, 10
 
 def resort_min_diff(amat):
     mb = NearestNeighbors(len(amat), metric='manhattan').fit(amat)

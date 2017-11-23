@@ -30,7 +30,7 @@ def load_data(xfile, maxlen = 5000, hard_stop = 1e60):
         #print len(q)
         #print q[0][:10], q[-1][:10]
         q = resort_min_diff(np.array(q)).T
-        q = (q*-2+1)*-1  # this maps 0/1 to -1/1
+        q = q*2-1 # this maps 0/1 to -1/1
         if q.shape[0] <= maxlen:
             f.append(q)
             all_pos.append(pos)

@@ -9,7 +9,6 @@ from random import shuffle, choice
 batch_size = 256
 epochs = 60
 num_classes = 3
-Using TensorFlow backend.
 
 u = np.load("/dataset/big_sim.npz")
 xtrain, xtest, ytrain, ytest = [u[i] for i in ['xtrain', 'xtest', 'ytrain', 'ytest']]
@@ -32,7 +31,7 @@ model.add(Dense(128, activation='relu'))
 model.add(Dropout(0.5))
 model.add(Dense(128, activation='relu'))
 model.add(Dropout(0.5))
-model.add(Dense(num_classes, activation='sigmoid'))
+model.add(Dense(num_classes, activation='softmax'))
 model.compile(loss=keras.losses.categorical_crossentropy,
               optimizer=keras.optimizers.Adam(),
               metrics=['accuracy'])

@@ -16,7 +16,7 @@ def sort_min_diff(amat):
 def convert_01_to_neg1_1(amat):
     '''convert standard binary 0/1 ms SNP matrix to -1/1 SNP matrix. B/c weights & biases are drawn from a distribution with mean=0
     choosing -1/1 (which is also mean=0) tends to help in training. assumes your input matrix is a numpy array'''
-    return (amat*-2+1)*-1 
+    return amat*2-1 
 
 a = (i.strip().split('asdfasdfd') for i in gz('all.LD.sims.txt.gz'))
 

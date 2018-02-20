@@ -48,7 +48,7 @@ plt.show()
 ytest_rho_log_centered = np.log(ytest_rho) - mean_test
 plt.hist(ytest_rho_log_centered)
 plt.show()
-print (mean_test, mean_train) #the mean train is important, it's 4.78838995038
+print ("mean of training data, save:", mean_train) #the mean train is important, it's 4.78838995038
 
 
 #data preped, now build model
@@ -97,7 +97,7 @@ for epoch in range(3):
 #done, save that json string and the weights file.  need those for validation
 j = model.to_json()
 print(j)
-model.save_weights('merge.mod.weights')
+model.save_weights('3rd.autotet.mergnet.weights')
 
 #from matplotlib import pyplot as plt
 #pred = np.array([np.exp(ii[0]+mean_test) for ii in model.predict([xtest,postest])])

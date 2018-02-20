@@ -55,7 +55,7 @@ for i in p:
         nn = [u[2] for u in X[theta]]
         print rmse(real, ldhat), rmse(real, nn), rmse(ldhat, nn)
         print r2(real, ldhat), r2(real, nn), r2(ldhat, nn)
-cPickle.dump(X, open('realrho.ldhatrho.nnrho.json', 'w'))
+cPickle.dump(X, open('realrho.ldhatrho.nnrho.pickle', 'w'))
 
 # for i in X:
 #     z = X[i]

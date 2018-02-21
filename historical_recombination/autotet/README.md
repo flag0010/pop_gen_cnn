@@ -3,7 +3,7 @@ Requires installation of keras, tensorflow, numpy, scikit-learn, matplotlib, and
 
 All python code runs on python2.7, EXCEPT the model training.  That was done in the cloud on python 3.6!  Sorry!
 
-To run, first run the shell script to produce coalescent simulations (requires ms)
+To run, first run the shell script to produce coalescent simulations (requires ms https://uchicago.app.box.com/s/l3e5uf13tikfjm7e1il1eujitlsjdx13)
 
 `./autotet.run.ms.sh`
 

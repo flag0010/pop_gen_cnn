@@ -11,12 +11,12 @@ nn_abs_resid = abs(nn-real)
 score = as.numeric(ldhat_abs_resid > nn_abs_resid)
 
 #fit a loess func (this is a little different than the version in python, but same idea)
+#used the NN here and below to guess what rho should be, because it had a greater accuracy 
+#(it would be cheating to use the real rho value here, b/c in practice you'd never have that outside of simulations)
 l = loess(score~nn,span=0.15)
 #plot(real[order(real)], predict(l, real[order(real)]), ty='l', ylim=c(0,1))
 
 #now extract weights for weighted mean from loess
-#used the NN hear to guess what rho should be, because it had a greater accuracy 
-#(it would be cheating to use the real rho value here, b/c in practice you'd never have that)
 ensemble_weights = predict(l, nn)
 
 #ensemble prediction using weighted mean
@@ -28,9 +28,9 @@ rmse_ldhat = mean((ldhat-real)^2)^0.5
 rmse_nn = mean((nn-real)^2)^0.5
 
 print (c('rmse ldhat', rmse_ldhat))
-print (c('rmse ldhat', rmse_nn))
-print (c('rmse ldhat', rmse_ensemble))
+print (c('rmse NN', rmse_nn))
+print (c('rmse ENSEMBLE', rmse_ensemble))
 
 #[1] "rmse ldhat"         "0.0160305611954135"
-#[1] "rmse ldhat"         "0.0125788914393887"
-#[1] "rmse ldhat"         "0.0121620028651569"
+#[1] "rmse NN"         "0.0125788914393887"
+#[1] "rmse ENSEMBLE"         "0.0121620028651569"

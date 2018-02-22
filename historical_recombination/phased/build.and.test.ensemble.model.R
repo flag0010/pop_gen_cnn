@@ -32,5 +32,5 @@ print (c('rmse NN', rmse_nn))
 print (c('rmse ENSEMBLE', rmse_ensemble))
 
 #[1] "rmse ldhat"         "0.0160305611954135"
-#[1] "rmse NN"         "0.0125788914393887"
-#[1] "rmse ENSEMBLE"         "0.0121620028651569"
+#[1] "rmse NN"            "0.0125788914393887"
+#[1] "rmse ENSEMBLE"      "0.0121620028651569"

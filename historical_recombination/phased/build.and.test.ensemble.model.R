@@ -25,12 +25,24 @@ ensemble_pred = (nn*ensemble_weights + ldhat*(1-ensemble_weights))
 
 rmse_ensemble = mean((real-ensemble_pred)^2)^0.5
 rmse_ldhat = mean((ldhat-real)^2)^0.5
-rmse_nn = mean((nn-real)^2)^0.5
+rmse_nn = mean((nn-real)^2)^0.5r2_ensemble = cor(real, ensemble_pred)^2
+
+r2_ensemble = cor(real, ensemble_pred)^2
+r2_ldhat = cor(real, ldhat)^2
+r2_nn = cor(real, nn)^2
 
 print (c('rmse ldhat', rmse_ldhat))
 print (c('rmse NN', rmse_nn))
 print (c('rmse ENSEMBLE', rmse_ensemble))
 
+print (c('r2 ldhat', r2_ldhat))
+print (c('r2 NN', r2_nn))
+print (c('r2 ENSEMBLE', r2_ensemble))
+
 #[1] "rmse ldhat"         "0.0160305611954135"
-#[1] "rmse NN"            "0.0125788914393887"
+#[1] "rmse NN"         "0.0125788914393887"
+#[1] "rmse ENSEMBLE"         "0.0121620028651569"
+#[1] "r2 ldhat"          "0.768138741795386"
+#[1] "r2 NN"             "0.861572346243779"
+#[1] "r2 ENSEMBLE"       "0.881294110333308"
 #[1] "rmse ENSEMBLE"      "0.0121620028651569"

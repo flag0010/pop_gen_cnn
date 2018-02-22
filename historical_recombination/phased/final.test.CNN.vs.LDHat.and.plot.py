@@ -50,8 +50,15 @@ print rmse(real, nn), rmse(real, ld)
 print map(len, [real, nn, ld])
 print "LDHAT vs NN",  r2(ld, nn), rmse(ld, nn)
 
-zz = np.array([(i+j)/2. for i,j in zip(nn, ld)])
-print 'ensemble', r2(real, zz), rmse(real,zz)
+b = open('input.data.for.ensemble.csv', 'w')
+b.write('real_rho,nn,ldhat\n')
+for i in zip(*[real, nn, ld]):
+    b.write(','.join(map(str, i))+'\n')
+b.close()
+
+
+#zz = np.array([(i+j)/2. for i,j in zip(nn, ld)])
+#print 'ensemble', r2(real, zz), rmse(real,zz)
 
 nn_better = []
 

@@ -25,7 +25,7 @@ ensemble_pred = (nn*ensemble_weights + ldhat*(1-ensemble_weights))
 
 rmse_ensemble = mean((real-ensemble_pred)^2)^0.5
 rmse_ldhat = mean((ldhat-real)^2)^0.5
-rmse_nn = mean((nn-real)^2)^0.5r2_ensemble = cor(real, ensemble_pred)^2
+rmse_nn = mean((nn-real)^2)^0.5
 
 r2_ensemble = cor(real, ensemble_pred)^2
 r2_ldhat = cor(real, ldhat)^2

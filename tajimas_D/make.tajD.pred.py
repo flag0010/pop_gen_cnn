@@ -10,7 +10,7 @@ from matplotlib import pyplot as plt
 from sklearn.neighbors import NearestNeighbors
 
 
-def resort_min_diff(amat):
+def sort_min_diff(amat):
     mb = NearestNeighbors(len(amat), metric='manhattan').fit(amat)
     v = mb.kneighbors(amat)
     smallest = np.argmin(v[0].sum(axis=1))

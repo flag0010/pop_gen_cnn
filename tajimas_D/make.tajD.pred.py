@@ -30,7 +30,7 @@ for i in xrange(5000):
     for j in range(20):
         if choice([0,1]): q.append(v)
         else: q.append(np.random.randint(2, size=40)*2-1)
-    x.append(resort_min_diff(np.array(q)))
+    x.append(sort_min_diff(np.array(q)))
     
 x = np.array(x)
 

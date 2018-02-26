@@ -13,7 +13,7 @@ from pprint import pprint
 
 nreps, nepoch = 10, 10
 
-def resort_min_diff(amat):
+def sort_min_diff(amat):
     mb = NearestNeighbors(len(amat), metric='manhattan').fit(amat)
     v = mb.kneighbors(amat)
     smallest = np.argmin(v[0].sum(axis=1))
@@ -141,8 +141,8 @@ for i in range(nreps):
     all_out['neg1_1'].append(f)
     pprint( all_out )
 
-rtrain = np.array([resort_min_diff(i.T).T for i in xtrain])
-rtest = np.array([resort_min_diff(i.T).T for i in xtest])
+rtrain = np.array([sort_min_diff(i.T).T for i in xtrain])
+rtest = np.array([sort_min_diff(i.T).T for i in xtest])
 
 for i in range(nreps):
     model = Sequential()

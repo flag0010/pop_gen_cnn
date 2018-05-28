@@ -1,3 +1,5 @@
+NOTE: LEAVING THIS FOR HISTORICAL PURPOSES. UNDER SOME SCENARIOS CONVERTING FROM 0/1 TO -1/1 IS BENEFICIAL. TYPICALLY WHEN THE MEAN OF EACH MATRIX IS NEAR 0.5. HOWEVER AS ALLELE FREQS ARE COMMONLY SKEWED, THE MEAN WILL BE CLOSER TO ZERO, AND THEN 0/1 ENCODING MAY BE BETTER. SO CHECK YOUR DATA BEFORE RECODING. THE SIMS HERE DO NOT REFLECT 'NORMAL' COALESCENTS, AND SHOULD NOT BE OVERINTERPRETED REGARDING SNP ENCODING
+
 This is a simple net that predicts Tajima's D and demonstrates the impact of different techniques used to transform the training data. 
 
 Figure_1.png contains the results.  The lower the RMSE the better.  The lines are the average of 10 runs.  Note y-axis is log scaled to pick up small diffs at lower end.

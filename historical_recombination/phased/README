@@ -22,16 +22,18 @@ To train the network, first find a computer with a GPU and get keras and tensorf
  `python3 train.phased.mergenet.PYTHON3.py`
  
 Before training begins, the code will print the mean of the training data.  Save that value (should be about 4.8).  
-After training the model it prints a json string that specifies the model structure.  You'll want to save that too.  Also the script saves the weights from the CNN in a file called '3rd.autotet.mergnet.weights'
+After training the model it prints a json string that specifies the model structure.  You'll want to save that too.  Also the script saves the weights from the CNN in a file called 'regularized.merge.mod.weights'
  
  Next generate some new independent test data with ms.  Run
+
+Ignore BELOW!  Needs to be updated
+
+# `./run.ms.test.sh`
  
- `./run.ms.test.sh`
+# and gzip the output as above (or skip, i've provided a file `autotet.test.data.LD.sims.txt.gz`)
  
- and gzip the output as above (or skip, i've provided a file `autotet.test.data.LD.sims.txt.gz`)
+# Finally test the CNN on this independent test data, (back in python2.7)
  
- Finally test the CNN on this independent test data, (back in python2.7)
+# `python final.autotet.test.results.py`
  
- `python final.autotet.test.results.py`
- 
- This will print the R^2 and RMSE and a plot
+# This will print the R^2 and RMSE and a plot

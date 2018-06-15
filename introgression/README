@@ -2,7 +2,7 @@ REIMPLEMENATION OF FILET USING DEEP NEURAL NET
 
 The original FILET approach used a decision tree ensemble to detect introgression.  It relied on a user specified feature vector based pop gen summary stats. The advantage of using a neural network is that the network itself extracts a feature vector during training, meaning it's not limited by the current the state of the art in pop gen summary stats.
 
-My first attempt involved using a convolutional neural network architecture.  First I encoded the training data (bi-allelic SNPs encoded as binary matrices) as a sort of binary image. An example image can be found at the link below.
+Here we use a convolutional neural network architecture.  First I encoded the training data (bi-allelic SNPs encoded as binary matrices) as a sort of binary image. An example image can be found at the link below.
 
 https://github.com/flag0010/FILET/blob/master/Figure_1.png
 
@@ -10,28 +10,23 @@ There are 34 lines, 20 from pop1 and 14 from pop2. Normally SNP matrices are dis
 
 Next I had to deal with the fact that the training SNP matrices are of variable length.  In the training data supplied with FILET I found the longest had 1102 SNPs. I padded all training data to this length by adding zeros.  This is why the the bottom of the matrix image above is all black.
 
-Now I'm fiddling with network architecture.  Because the SNP matrices are transposed a 1D convolution (row-wise) will stride across a single SNP for all 34 individuals.  This allows the neural net to do something like image segmentation and discover that there are 20 indivuals from pop1 and 14 from pop2 (the network is not aware of pop labels).  I'm still working on optimizing this striding along with pooling to 1) keep the network relatively small, yet 2) allow it to efficiently discover populations and extract meaningful features.  
+Because the SNP matrices are transposed a 1D convolution (col-wise) will stride across a single chromosome for all SNPs.    
 
-Finally, as with the original version, the output classification includes 3 possibilities.  Migration from pop1 into pop2, the reverse, and no migration. This is accomplished in the standard way using a final softmax network layer with 3 outputs, one for each class.
+Finally, as with the original version, the output classification includes 3 possibilities.  Migration from pop1 into pop2, the reverse, and no migration. 
 
-Two other observations:
-1) one can shuffle the rows (SNPs) in the SNP arrays to create new inputs using existing inputs.  This should help in training the network, much in the same way that people add perturbations to images when training image classifiers
-2) one can flip all the bits in the binary SNP matrix (e.g. for matrix m, flipped = m*-1+1). This also can be used to create new inputs, and trains the network not to focus on specific values (0 or 1), but rather on patterns and correlations between values. This seems important since assigning SNPs to bits is arbitrary.
+To run you need python 2.7 and python 3, with numpy, keras and tensorflow. Ideally with the python 3 version set up on a gpu. 
 
-to run, first install python 2.7, with numpy, keras and tensorflow.  Then extract the data running:
-python extract.data.set.py
+Next download these 2 large files gzipped and add to this working directory: https://www.dropbox.com/sh/molccbxdm7zasbi/AABsVGfdZJvmF1PLkC3pY8Mva?dl=0
 
-Then fit a CNN:
-python 2.hidden.layer.model.87.8.accuracy.py
+Then extract the data by running the following (coded for python 2.7):
+`python extract.big.data.set.py`
 
-After several runs this confusion matrix shows about the best I can do:
+This will produce a file called `big_sim.npz`, which is the training and validation data.
 
-T   no migration  [[ 29.51666667   0.           3.65      ]
-R   1->2           [  0.4         33.21666667   0.8       ]
-U   2->1           [  6.8          0.6         25.01666667]]
-E                  no migration    1->2         2->1
-                             PREDICTED
+Then in python3 fit a CNN:
+`python train.neural.net.introgression.CNN.PYTHON3.py`
 
-The accuracy is about 87.8% with issues telling apart no migration from 2->1. 
+After 19 epochs I got an accuracy on validation data of approx 89%.  I stopped and output my trained model as `big.data.89.2.acc.mod`.
 
-In this model I octupled the training data set synthetically by shuffling the rows as suggested above.  I have not yet tried bit flipping. I've tried several other things, and haven't really be able to find anything that cracks into > 88%.  At the moment each of the 3 classes makes up 1/3rd of the data set.  Probably generating many more examples of no migration and 2->1 would be beneficial. The model will learn the 1->2 class easily with less data.
+This model can now be used on test data to get a final estimate of model quality (back in python 2.7!):
+`extract.test.data.and.get.final.model.confusion.matrix.py`

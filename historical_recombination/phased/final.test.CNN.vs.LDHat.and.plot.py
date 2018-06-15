@@ -81,7 +81,7 @@ for i,j in b:
     meanx.append(sum(x)*len(x)**-1)
 
 
-plt.subplot(1,4,1)
+plt.subplot(2,2,1)
 
 plt.plot([min(real), max(real)], [min(real), max(real)], color='r')
 #plt.semilogx()
@@ -90,43 +90,43 @@ plt.ylim(-0.01,.25)
 plt.xlim(-0.01,.25)
 
 plt.scatter(real, ld, alpha=.1, color='k', marker='.')
-plt.ylabel('LDhat rho estimate')
-plt.xlabel('real rho value')
+plt.ylabel('LDhat ' + r'$\rho$' + ' estimate')
+plt.xlabel('real ' + r'$\rho$' + ' value')
 
 
-plt.subplot(1,4,2)
+plt.subplot(2,2,2)
 
 plt.plot([min(real), max(real)], [min(real), max(real)], color='r')
 #plt.semilogx()
 #plt.semilogy()
 
 plt.scatter(real, nn, alpha=.1, color='k', marker='.')
-plt.ylabel('CNN rho estimate')
-plt.xlabel('real rho value')
+plt.ylabel('CNN ' + r'$\rho$' + ' estimate')
+plt.xlabel('real ' + r'$\rho$' + ' value')
 plt.ylim(-0.01,.25)
 plt.xlim(-0.01,.25)
 
-plt.subplot(1,4,3)
+plt.subplot(2,2,3)
 #plt.semilogx()
 #plt.semilogy()
 #plt.scatter([i[0] for i in b], [i[1] for i in b], alpha=.1, color='k', marker='.')
 plt.axhline(y=1/2., color='r')
 low = lowess(endog=[i[1] for i in b], exog=[i[0] for i in b], frac=.15)
 plt.plot(low[:,0], low[:,1], color='k')
-plt.ylabel('probability CNN better than LDhat')
-plt.xlabel('real rho value')
+plt.ylabel('probability CNN more accurate than LDhat')
+plt.xlabel('real ' + r'$\rho$' + ' value')
 plt.ylim(-0.1,1.1)
 
 
 autotet = get_file('../autotet/autotet.test.data.results.csv', ',')[1:]
 pred = [float(i[-2])/20000. for i in autotet]
 real = [float(i[-1])/20000. for i in autotet]
-plt.subplot(1,4,4)
+plt.subplot(2,2,4)
 plt.plot([min(real), max(real)], [min(real), max(real)], color='r')
 
 plt.scatter(real, pred, alpha=.1, color='k', marker='.')
-plt.ylabel('autotetraploid rho estimate')
-plt.xlabel('autotetraploid real value')
+plt.ylabel('autotetraploid CNN ' + r'$\rho$' + ' estimate')
+plt.xlabel('autotetraploid real ' + r'$\rho$' + ' value')
 plt.ylim(-0.01,.30)
 plt.xlim(-0.01,.30)
 print r2(real,pred), rmse(real, pred)

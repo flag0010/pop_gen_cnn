@@ -19,14 +19,14 @@ To run you need python 2.7 and python 3, with numpy, keras and tensorflow. Ideal
 Next download these 2 large files gzipped and add to this working directory: https://www.dropbox.com/sh/molccbxdm7zasbi/AABsVGfdZJvmF1PLkC3pY8Mva?dl=0
 
 Then extract the data by running the following (coded for python 2.7):
-`python extract.big.data.set.py`
+```python extract.big.data.set.py```
 
-This will produce a file called `big_sim.npz`, which is the training and validation data.
+This will produce a file called ```big_sim.npz```, which is the training and validation data.
 
 Then in python3 fit a CNN:
-`python train.neural.net.introgression.CNN.PYTHON3.py`
+```python train.neural.net.introgression.CNN.PYTHON3.py```
 
-After 19 epochs I got an accuracy on validation data of approx 89%.  I stopped and output my trained model as `big.data.89.2.acc.mod`.
+After 19 epochs I got an accuracy on validation data of approx 89%.  I stopped and output my trained model as ```big.data.89.2.acc.mod```.
 
 This model can now be used on test data to get a final estimate of model quality (back in python 2.7!):
-`extract.test.data.and.get.final.model.confusion.matrix.py`
+```extract.test.data.and.get.final.model.confusion.matrix.py```

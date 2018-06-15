@@ -22,11 +22,6 @@ def sort_min_diff(amat):
     smallest = np.argmin(v[0].sum(axis=1))
     return amat[v[1][smallest]]
 
-def convert_01_to_neg1_1(amat):
-    '''convert standard binary 0/1 ms SNP matrix to -1/1 SNP matrix. B/c weights & biases are drawn from a distribution with mean=0
-    choosing -1/1 (which is also mean=0) tends to help in training. assumes your input matrix is a numpy array'''
-    return (amat*-2+1)*-1 
-
 def rsquare(x,y):
     return np.corrcoef(x,y)[0][1]**2  #r-squared
 
@@ -45,7 +40,7 @@ for pos, theta_rho, str_mat in s:
     nm = []
     for i in str_mat:
         nm.append([float(j) for j in i])
-    nm = convert_01_to_neg1_1(sort_min_diff(np.array(nm))).T
+    nm = sort_min_diff(np.array(nm)).T
     #print nm.shape
     xtest.append(nm)
     ytest.append(theta_rho)
@@ -67,8 +62,6 @@ xtest = sequence.pad_sequences(xtest, maxlen=418, padding='post')
 postest = sequence.pad_sequences(postest, maxlen=418, padding='post', value=-1., dtype='float32')
 ytest_rho = np.array([i[1] for i in ytest])
 thetas=[i[0] for i in ytest]
-
-xtest = (xtest+1)/2.
 
 #print postest
 
@@ -130,8 +123,6 @@ ytest_rho = np.array([i[1] for i in ytest])
 thetas=[i[0] for i in ytest]
 mean_test = 4.78757605959  #use training data mean ln(rho)  np.mean(np.log(ytest_rho))
 print mean_test
-
-xtest = (xtest+1)/2.
 
 pred = mod.predict([xtest,postest])
 #plt.hist(pred, bins=24)

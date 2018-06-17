@@ -18,4 +18,4 @@ doSim 		<- function(index){
 }
 
 x = unlist(lapply(1:n.sims, doSim))
-write.table(x, 'run.ms.sh' sep='\n', quo=F, row=F)
+write.table(x, 'run.ms.sh', sep='\n', quo=F, row=F)

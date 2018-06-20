@@ -15,25 +15,25 @@ Next run the python2.7 script
 
 `python extract.data.py`
 
-This will output a large compressed file called "ld.data.npz". Use this file as training data for the network.
+This will output a large compressed file called `ld.data.npz`. Use this file as training data for the network.
 
 To train the network, first find a computer with a GPU and get keras and tensorflow installed.  This was done in python3.6
  
  `python3 train.phased.mergenet.PYTHON3.py`
  
 Before training begins, the code will print the mean of the training data.  Save that value (should be about 4.8).  
-After training the model it prints a json string that specifies the model structure.  You'll want to save that too.  Also the script saves the weights from the CNN in a file called 'regularized.merge.mod.weights'
+After training the model it prints a json string that specifies the model structure.  You'll want to save that too.  Also the script saves the weights from the CNN in a file called `regularized.merge.mod.weights`.
  
- Next generate some new independent test data with ms.  Run
+Next gunzip the dir called LDhat dir
 
-Ignore BELOW!  Needs to be updated
+`gunzip ldhat.data.tar.gz`
 
-# `./run.ms.test.sh`
- 
-# and gzip the output as above (or skip, i've provided a file `autotet.test.data.LD.sims.txt.gz`)
- 
-# Finally test the CNN on this independent test data, (back in python2.7)
- 
-# `python final.autotet.test.results.py`
- 
-# This will print the R^2 and RMSE and a plot
+and extract new coalescent sims for testing LDhat and the CNN against
+
+`python ms.file.to.fasta.py validate.LD.sims.txt`
+
+This outputs a JSON file called `test.data.LD.json` and a directory of `pairs` and `locs` files for LDhat.  Next test LDhat by going back to the parent directory, download LDhat from here (http://ldhat.sourceforge.net/) and run:
+`python run.ldhat.1.py`
+
+
+This will print the R^2 and RMSE and a plot

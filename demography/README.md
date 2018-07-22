@@ -2,7 +2,7 @@ This directory contains the files necessary to perform the demographic inference
 
 1) The file extractDataSet.py is used to format data for training as follows:
 
-python extractDataSet.py $msFilePath $demogParamPath $maxSegsites $maxDistance $outFilePath
+`python extractDataSet.py $msFilePath $demogParamPath $maxSegsites $maxDistance $outFilePath`
 
 The arguments are as follows:
 
@@ -19,7 +19,7 @@ outFilePath: the path to an npz-file (https://docs.scipy.org/doc/numpy-1.14.0/re
 
 2) The file demogConvRegMerge.py reads in files produced by extractDataSet.py and performs training and testing as described in the manuscript.
 
-python demogConvRegMerge.py $convDim $convSize $poolSize $logTransformY $intAllele $sortRows $useDropout $lossThreshold $inDir $weightFileName $modelFileName $resultFileName
+`python demogConvRegMerge.py $convDim $convSize $poolSize $logTransformY $intAllele $sortRows $useDropout $lossThreshold $inDir $weightFileName $modelFileName $resultFileName`
 
 The arguments are:
 

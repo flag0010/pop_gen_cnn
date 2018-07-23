@@ -5,6 +5,7 @@ It is nearly 14 Gb. Unlike the other models in this repo, the training data for 
 
 To train the CNN first run: `python3 train.model.PYTHON3.py`
 
-This will sequentially train the CNN for 3 epochs and at the end run on the test data producing the final confusion matrix found in the paper.  
+This will sequentially train the CNN for 3 epochs and at the end run on the test data producing the final confusion matrix found in the paper. There are 5 classes of sweeps, and in the model they are encoded as follows:
+neutral=0, hard=1, hard-near=2, soft=3, soft-near=4
 
 For now this one can only be run using our previously produced training file. Later I will update with discoal code used for producing your own.   

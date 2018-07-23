@@ -36,6 +36,6 @@ This outputs a JSON file called `test.data.LD.json` and a directory of `pairs` a
 `python run.ldhat.1.py`
 
 Now run
-`final.test.results.full.model.and.gap.py`
+`python final.test.results.full.model.and.gap.py`
 
 This will print the R^2 and RMSE for LDhat and the CNN, and also perform an analysis on how well the CNN interpolates to new values of theta.

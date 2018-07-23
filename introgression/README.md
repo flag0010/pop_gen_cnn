@@ -12,7 +12,7 @@ Next I had to deal with the fact that the training SNP matrices are of variable 
 
 Because the SNP matrices are transposed a 1D convolution (col-wise) will stride across a single chromosome for all SNPs.    
 
-Finally, as with the original version, the output classification includes 3 possibilities.  Migration from pop1 into pop2, the reverse, and no migration. 
+Finally, as with the original version, the output classification includes 3 possibilities.  Migration from pop1 into pop2, the reverse, and no migration. I encoded these as follows: no-mig. = 0, 1->2 = 1, 2->1 = 2
 
 To run you need python 2.7 and python 3, with numpy, keras and tensorflow. Ideally with the python 3 version set up on a gpu. 
 

@@ -35,5 +35,7 @@ and extract new coalescent sims for testing LDhat and the CNN against
 This outputs a JSON file called `test.data.LD.json` and a directory of `pairs` and `locs` files for LDhat.  Next test LDhat by going back to the parent directory, download LDhat from here (http://ldhat.sourceforge.net/) and run:
 `python run.ldhat.1.py`
 
+Now run
+`final.test.results.full.model.and.gap.py`
 
-This will print the R^2 and RMSE and a plot
+This will print the R^2 and RMSE for LDhat and the CNN, and also perform an analysis on how well the CNN interpolates to new values of theta.

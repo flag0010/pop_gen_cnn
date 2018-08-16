@@ -16,7 +16,7 @@ Finally, as with the original version, the output classification includes 3 poss
 
 To run you need python 2.7 and python 3, with numpy, keras and tensorflow. Ideally with the python 3 version set up on a gpu. 
 
-Next download these 2 large files gzipped and add to this working directory: https://www.dropbox.com/sh/molccbxdm7zasbi/AABsVGfdZJvmF1PLkC3pY8Mva?dl=0
+Next download the 2 large gzipped files from the link below and add to this working directory: https://www.dropbox.com/sh/molccbxdm7zasbi/AABsVGfdZJvmF1PLkC3pY8Mva?dl=0
 
 Then extract the data by running the following (coded for python 2.7):
 ```python extract.big.data.set.py```

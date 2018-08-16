@@ -1,6 +1,6 @@
 REIMPLEMENATION OF FILET USING DEEP NEURAL NET
 
-The original FILET approach used a decision tree ensemble to detect introgression.  It relied on a user specified feature vector based pop gen summary stats. The advantage of using a neural network is that the network itself extracts a feature vector during training, meaning it's not limited by the current the state of the art in pop gen summary stats.
+The original FILET approach (https://github.com/kern-lab/FILET) used a decision tree ensemble to detect introgression.  It relied on a user specified feature vector based pop gen summary stats. The advantage of using a neural network is that the network itself extracts a feature vector during training, meaning it's not limited by the current the state of the art in pop gen summary stats.
 
 Here we use a convolutional neural network architecture.  First I encoded the training data (bi-allelic SNPs encoded as binary matrices) as a sort of binary image. An example image can be found at the link below.
 

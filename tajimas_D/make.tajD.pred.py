@@ -1,7 +1,7 @@
 import numpy as np
 import keras
 from keras.models import Sequential
-from keras.layers import Dense, Dropout, Flatten, Merge
+from keras.layers import Dense, Dropout, Flatten
 from keras.layers import Conv1D, MaxPooling1D, AveragePooling1D
 from generic_tajD import calc_S_and_k_from_seqs, count_all, tajD
 from random import choice

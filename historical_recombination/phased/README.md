@@ -15,7 +15,7 @@ Next run the python2.7 script
 
 `python extract.data.py`
 
-This will output a large compressed file called `ld.data.npz`. Use this file as training data for the network.
+This will output a large compressed file called `ld.data.npz`. You'll use this file as training data for the network. (Alternatively, if you want to skip these steps and use the exact coalescent sims we used in the manuscript you can download `ld.data.npz` at this data repository https://doi.org/10.13020/D65M4P)
 
 To train the network, first find a computer with a GPU and get keras and tensorflow installed.  This was done in python3.6
  

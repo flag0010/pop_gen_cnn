@@ -22,6 +22,7 @@ Then extract the data by running the following (coded for python 2.7):
 ```python extract.big.data.set.py```
 
 This will produce a file called ```big_sim.npz```, which is the training and validation data.
+(or alternatively you can skip the steps above and download `big_sim.npz` from this data repository: https://conservancy.umn.edu/handle/11299/198335)
 
 Then in python3 fit a CNN:
 ```python train.neural.net.introgression.CNN.PYTHON3.py```

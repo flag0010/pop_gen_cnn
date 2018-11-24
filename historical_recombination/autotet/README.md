@@ -15,7 +15,7 @@ Next run the python2.7 script
 
 `python conv.training.data.to.autotet.py`
 
-This will output a large compressed file called "autotet.ld.data.npz". Use this file as training data for the network.
+This will output a large compressed file called `autotet.ld.data.npz`. Use this file as training data for the network. (Alternatively, you can skip over these steps and use the exact set of coalescent simulations we used for training our model by downloading `autotet.ld.data.npz` from this data repository: https://conservancy.umn.edu/handle/11299/198335)
 
 To train the network, first find a computer with a GPU and get keras and tensorflow installed.  This was done in python3.6
  

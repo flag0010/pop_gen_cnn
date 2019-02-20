@@ -29,6 +29,7 @@ def unstandardize(y, mean, std):
 
 a = np.load('theta_sim.npz')
 xtrain, xtest, ytest, ytrain = [a[i] for i in ['xtrain', 'xtest', 'ytest', 'ytrain']]
+n_seg_sites, n_indv = xtrain[1].shape
 
 xtest_untransposed, xtrain_untransposed = map(transpose_shape, [xtest, xtrain])
 ytest_mean, ytest_std, ytest = standardize(ytest)
@@ -41,7 +42,7 @@ for i in range(nreps):
     model = Sequential()
     model.add(Conv1D(64, kernel_size=2,
                      activation='relu',
-                     input_shape=(40, 489)))
+                     input_shape=(n_indv, n_seg_sites)))
     model.add(Conv1D(64, kernel_size=2, activation='relu'))
     model.add(AveragePooling1D(pool_size=2))
     model.add(Dropout(0.25))
@@ -71,7 +72,7 @@ for i in range(nreps):
     model = Sequential()
     model.add(Conv1D(64, kernel_size=2,
                      activation='relu',
-                     input_shape=(489, 40)))
+                     input_shape=(n_seg_sites, n_indv)))
     model.add(Conv1D(64, kernel_size=2, activation='relu'))
     model.add(AveragePooling1D(pool_size=2))
     model.add(Dropout(0.25))
@@ -105,7 +106,7 @@ for i in range(nreps):
     model = Sequential()
     model.add(Conv1D(64, kernel_size=2,
                      activation='relu',
-                     input_shape=(489, 40)))
+                     input_shape=(n_seg_sites, n_indv)))
     model.add(Conv1D(64, kernel_size=2, activation='relu'))
     model.add(AveragePooling1D(pool_size=2))
     model.add(Dropout(0.25))

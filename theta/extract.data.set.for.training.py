@@ -26,7 +26,7 @@ def load_data(xfile, max_len):
         for i in L:
             i = [int(j) for j in list(i[0])]
             missing = max_len - len(i)
-            #for z in range(missing): i.append(0)
+            for z in range(missing): i.append(0)
             i = np.array(i, dtype=np.int8)
             q.append(i)
         q = np.array(q)

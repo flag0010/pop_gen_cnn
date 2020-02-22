@@ -68,7 +68,11 @@ X=X[:,:,1:]
 imgRows, imgCols = X.shape[1:]
 
 if useInt:
-    X = X.astype('int8')
+    X = X.astype('int8') 
+    #this ^^^ is a bug. the intent was to converts to 0/255, but as it it converts to 0/-1
+    #see: https://github.com/flag0010/pop_gen_cnn/issues/4
+    #leaving as is so the code represents what we actually did. Bugs and all
+    #if you want to fix to get 0/255, please see the suggestion at the link above
 else:
     X = X.astype('float32')/127.5-1
 if convDim == "2d":

@@ -25,7 +25,7 @@ This will produce a file called ```big_sim.npz```, which is the training and val
 (or alternatively you can skip the steps above and download `big_sim.npz` from this data repository: https://conservancy.umn.edu/handle/11299/198335)
 
 Then in python3 fit a CNN:
-```python train.neural.net.introgression.CNN.PYTHON3.py```
+```python3 train.neural.net.introgression.CNN.PYTHON3.py```
 
 After 19 epochs I got an accuracy on validation data of approx 89%.  I stopped and output my trained model as ```big.data.89.2.acc.mod```.
 

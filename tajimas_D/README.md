@@ -5,8 +5,8 @@ to run follow the steps below
 
 then install keras and tensorflow:
 
-2) `pip install keras`
-3) `conda install tensorflow`
+2) `pip install keras==2.0.0`
+3) `conda install tensorflow==1.15`
 
 then run
 
